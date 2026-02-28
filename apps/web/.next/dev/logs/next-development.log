@@ -1,1 +1,152 @@
+<<<<<<< HEAD
+[00:00:02.747] Server  LOG     ✓ Ready in 2s
+[00:00:06.746] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:07.026] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:07.103] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:07.627] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:08.347] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="/apps/web/...">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html
+                          lang="en"
+                          className="dark"
+-                         style={{--vsc-domain:"\"localhost\""}}
+                        >
+                  ...
+
+[00:00:51.799] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:52.393] Server  LOG     ✓ Compiled in 82ms
+[00:02:26.866] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:59.987] Browser LOG     scrollTop: 0
+[00:10:14.597] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:19.085] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:10:19.085] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:10:29.910] Server  LOG     ✓ Compiled in 326ms
+[00:11:06.144] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:20:24.171] Server  LOG     ✓ Compiled in 238ms
+[00:20:38.613] Server  LOG     ✓ Compiled in 203ms
+[00:20:49.016] Server  LOG     ✓ Compiled in 48ms
+[00:21:04.898] Server  LOG     ✓ Compiled in 212ms
+[00:21:22.962] Server  LOG     ✓ Compiled in 226ms
+[00:21:33.316] Server  LOG     ✓ Compiled in 191ms
+[00:21:46.097] Server  LOG     ✓ Compiled in 210ms
+[00:22:06.936] Server  LOG     ✓ Compiled in 186ms
+[00:22:24.133] Server  LOG     ✓ Compiled in 53ms
+[00:22:26.011] Server  LOG     ✓ Compiled in 218ms
+[00:22:35.857] Server  LOG     ✓ Compiled in 50ms
+[00:22:37.214] Server  LOG     ✓ Compiled in 39ms
+[00:22:53.880] Server  LOG     ✓ Compiled in 40ms
+[00:23:05.136] Server  LOG     ✓ Compiled in 50ms
+[00:23:07.031] Server  LOG     ✓ Compiled in 54ms
+[00:23:09.156] Server  LOG     ✓ Compiled in 47ms
+[00:23:13.798] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:24:08.611] Server  LOG     ✓ Compiled in 47ms
+[00:24:41.564] Server  LOG     ✓ Compiled in 48ms
+[00:24:43.037] Server  LOG     ✓ Compiled in 37ms
+[00:24:45.014] Server  LOG     ✓ Compiled in 53ms
+[00:24:52.766] Server  LOG     ✓ Compiled in 52ms
+[00:25:06.975] Server  LOG     ✓ Compiled in 53ms
+[00:25:15.152] Server  LOG     ✓ Compiled in 36ms
+[00:25:33.788] Server  LOG     ✓ Compiled in 33ms
+[00:25:37.110] Server  LOG     ✓ Compiled in 53ms
+[00:25:42.107] Server  LOG     ✓ Compiled in 50ms
+[00:26:48.282] Server  LOG     ✓ Compiled in 32ms
+[00:26:57.620] Server  LOG     ✓ Compiled in 35ms
+[00:27:07.683] Server  LOG     ✓ Compiled in 41ms
+[00:27:08.891] Server  LOG     ✓ Compiled in 41ms
+[00:27:09.978] Server  LOG     ✓ Compiled in 28ms
+[00:27:11.324] Server  LOG     ✓ Compiled in 41ms
+[00:27:42.751] Server  LOG     ✓ Compiled in 70ms
+[00:27:53.680] Server  LOG     ✓ Compiled in 63ms
+[00:27:58.340] Server  LOG     ✓ Compiled in 80ms
+[00:28:06.951] Server  LOG     ✓ Compiled in 48ms
+[00:28:09.141] Server  LOG     ✓ Compiled in 38ms
+[00:28:14.849] Server  LOG     ✓ Compiled in 48ms
+[00:28:16.901] Server  LOG     ✓ Compiled in 51ms
+[00:28:22.513] Server  LOG     ✓ Compiled in 49ms
+[00:28:24.338] Server  LOG     ✓ Compiled in 39ms
+[00:29:39.269] Server  LOG     ✓ Compiled in 226ms
+[00:31:31.223] Server  LOG     ✓ Compiled in 57ms
+[00:32:46.759] Server  LOG     ✓ Compiled in 369ms
+[00:40:08.532] Server  LOG     ✓ Compiled in 567ms
+[00:40:09.844] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:40:09.869] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:40:09.873] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:40:10.733] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:42:27.393] Server  LOG     ✓ Compiled in 163ms
+[00:43:29.269] Server  LOG     ✓ Compiled in 0ms
+[00:44:46.434] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:45:17.382] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:45:46.449] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:50:22.300] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:51:46.400] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:52:35.714] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:52:45.711] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:54:05.033] Server  LOG     ✓ Compiled in 352ms
+[00:54:05.384] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:54:05.504] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:54:48.577] Server  LOG     ✓ Compiled in 370ms
+[00:55:30.480] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:55:39.715] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:55:50.688] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:59:03.592] Server  LOG     ✓ Compiled in 301ms
+[01:01:11.573] Server  LOG     ✓ Compiled in 62ms
+[01:01:14.202] Server  LOG     ✓ Compiled in 92ms
+[01:01:17.386] Server  LOG     ✓ Compiled in 224ms
+[01:01:41.503] Server  LOG     ✓ Compiled in 42ms
+[01:01:47.844] Server  LOG     ✓ Compiled in 39ms
+[01:01:49.022] Server  LOG     ✓ Compiled in 42ms
+[01:02:02.258] Server  LOG     ✓ Compiled in 52ms
+[01:02:04.345] Server  LOG     ✓ Compiled in 127ms
+[01:02:10.494] Server  LOG     ✓ Compiled in 44ms
+[01:02:14.196] Server  LOG     ✓ Compiled in 45ms
+[01:02:20.971] Server  LOG     ✓ Compiled in 53ms
+[01:02:44.498] Server  LOG     ✓ Compiled in 232ms
+[01:04:58.623] Server  LOG     ✓ Compiled in 94ms
+[01:06:29.298] Server  LOG     ✓ Compiled in 67ms
+[01:07:17.199] Server  LOG     ✓ Compiled in 82ms
+[01:08:32.893] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:09:03.303] Browser LOG     Onboarding answers: {"contributions":["testing","bugfixes"],"experience":"beginner","goal":"learn","languages":["javascript","typescript","python","rust","java"]}
+[01:09:18.243] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:09:34.423] Browser LOG     Onboarding answers: {"contributions":["testing","bugfixes","features"],"experience":"beginner","goal":"learn","languages":["cpp","csharp","rust"]}
+[01:11:37.100] Server  LOG     ✓ Compiled in 259ms
+[01:12:24.205] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:13:41.962] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:16:45.932] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:17:09.444] Browser LOG     Onboarding answers: {"contributions":["testing"],"experience":"expert","goal":"portfolio","languages":["php","ruby","java"]}
+[01:17:18.814] Server  LOG     ✓ Compiled in 288ms
+[01:19:31.629] Server  LOG     ✓ Compiled in 294ms
+[01:21:23.934] Server  LOG     ✓ Compiled in 240ms
+[01:22:42.246] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:22:53.963] Browser LOG     Onboarding answers: {"contributions":["testing","bugfixes"],"experience":"intermediate","goal":"portfolio","languages":["ruby","go","python"]}
+[01:24:01.254] Server  LOG     ✓ Compiled in 94ms
+=======
 [00:00:02.748] Server  LOG     ✓ Ready in 1872ms
+>>>>>>> 6d52eaa1e2b0fdc336c95ef981ae7fec338b5a97

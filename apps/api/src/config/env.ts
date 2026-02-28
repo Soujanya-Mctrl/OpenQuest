@@ -12,8 +12,14 @@ const schema = z.object({
     ALLOWED_ORIGINS: z.string().default('http://localhost:3000'),
     GEMINI_API_KEY: z.string().optional(),
     PINECONE_API_KEY: z.string().optional(),
-    PINECONE_INDEX: z.string().default('git-master-index'),
+    PINECONE_INDEX: z.string().default('OpenQuest-index'),
     CACHE_TTL_SECONDS: z.coerce.number().default(3600),
+    // GitHub OAuth
+    GITHUB_CLIENT_ID: z.string(),
+    GITHUB_CLIENT_SECRET: z.string(),
+    CALLBACK_URL: z.string().default('http://localhost:8000/api/auth/github/callback'),
+    SESSION_SECRET: z.string().default('openquest_session_secret_change_in_prod'),
+    FRONTEND_URL: z.string().default('http://localhost:3000'),
 });
 
 const parsed = schema.safeParse(process.env);

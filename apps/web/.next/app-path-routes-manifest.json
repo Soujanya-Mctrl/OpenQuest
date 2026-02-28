@@ -1,9 +1,12 @@
 {
+  "/(app)/analyze/page": "/analyze",
+  "/(app)/leaderboard/page": "/leaderboard",
+  "/(app)/profile/page": "/profile",
+  "/(app)/projects/page": "/projects",
+  "/(app)/quests/page": "/quests",
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
-  "/api/analyze/route": "/api/analyze",
-  "/api/fork/route": "/api/fork",
-  "/api/rag/route": "/api/rag",
   "/favicon.ico/route": "/favicon.ico",
+  "/onboarding/page": "/onboarding",
   "/page": "/"
 }

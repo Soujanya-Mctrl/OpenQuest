@@ -1,5 +1,5 @@
 /**
- * git-master demo repo indexer
+ * OpenQuest demo repo indexer
  * To be implemented
  */
 console.log("Indexing demo repos (stub)...");

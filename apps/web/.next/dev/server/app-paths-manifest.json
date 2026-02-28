@@ -1,1 +1,15 @@
+<<<<<<< HEAD
+{
+  "/(app)/analyze/page": "app/(app)/analyze/page.js",
+  "/(app)/projects/page": "app/(app)/projects/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/analyze/page": "app/analyze/page.js",
+  "/onboarding/page": "app/onboarding/page.js",
+  "/page": "app/page.js",
+  "/profile/page": "app/profile/page.js",
+  "/projects/page": "app/projects/page.js",
+  "/quests/page": "app/quests/page.js"
+}
+=======
 {}
+>>>>>>> 6d52eaa1e2b0fdc336c95ef981ae7fec338b5a97

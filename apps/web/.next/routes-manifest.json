@@ -41,28 +41,46 @@
       "namedRegex": "^/_not\\-found(?:/)?$"
     },
     {
-      "page": "/api/analyze",
-      "regex": "^/api/analyze(?:/)?$",
+      "page": "/analyze",
+      "regex": "^/analyze(?:/)?$",
       "routeKeys": {},
-      "namedRegex": "^/api/analyze(?:/)?$"
-    },
-    {
-      "page": "/api/fork",
-      "regex": "^/api/fork(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/api/fork(?:/)?$"
-    },
-    {
-      "page": "/api/rag",
-      "regex": "^/api/rag(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/api/rag(?:/)?$"
+      "namedRegex": "^/analyze(?:/)?$"
     },
     {
       "page": "/favicon.ico",
       "regex": "^/favicon\\.ico(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/favicon\\.ico(?:/)?$"
+    },
+    {
+      "page": "/leaderboard",
+      "regex": "^/leaderboard(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/leaderboard(?:/)?$"
+    },
+    {
+      "page": "/onboarding",
+      "regex": "^/onboarding(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/onboarding(?:/)?$"
+    },
+    {
+      "page": "/profile",
+      "regex": "^/profile(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/profile(?:/)?$"
+    },
+    {
+      "page": "/projects",
+      "regex": "^/projects(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/projects(?:/)?$"
+    },
+    {
+      "page": "/quests",
+      "regex": "^/quests(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/quests(?:/)?$"
     }
   ],
   "dataRoutes": [],

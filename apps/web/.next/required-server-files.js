@@ -63,7 +63,12 @@ self.__SERVER_FILES_MANIFEST={
           "search": ""
         }
       ],
-      "remotePatterns": [],
+      "remotePatterns": [
+        {
+          "protocol": "https",
+          "hostname": "avatars.githubusercontent.com"
+        }
+      ],
       "qualities": [
         75
       ],
@@ -100,7 +105,7 @@ self.__SERVER_FILES_MANIFEST={
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "D:\\Projects\\git-master\\git-master",
+    "outputFileTracingRoot": "D:\\Projects\\OpenQuest",
     "cacheComponents": false,
     "cacheLife": {
       "default": {
@@ -293,11 +298,11 @@ self.__SERVER_FILES_MANIFEST={
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.ts",
     "turbopack": {
-      "root": "D:\\Projects\\git-master\\git-master"
+      "root": "D:\\Projects\\OpenQuest"
     },
     "distDirRoot": ".next"
   },
-  "appDir": "D:\\Projects\\git-master\\git-master\\apps\\web",
+  "appDir": "D:\\Projects\\OpenQuest\\apps\\web",
   "relativeAppDir": "apps\\web",
   "files": [
     ".next\\routes-manifest.json",
