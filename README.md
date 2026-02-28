@@ -1,6 +1,6 @@
-# 🐙 git-master
+# 🌐 OpenQuest
 
-**git-master** is a GitHub-native code-intelligence & contribution accelerator. Paste any public repo URL and get an AI-powered, personalized "how to contribute" workflow — plus a code-aware RAG engine, one-click fork & clone, deterministic skill profiles for personalization, and an indexable code knowledge base for grounded question answering.
+**OpenQuest** is a GitHub-native code-intelligence & contribution accelerator. Paste any public repo URL and get an AI-powered, personalized "how to contribute" workflow — plus a code-aware RAG engine, one-click fork & clone, deterministic skill profiles for personalization, and an indexable code knowledge base for grounded question answering.
 
 ---
 
