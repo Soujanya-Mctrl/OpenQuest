@@ -14,6 +14,12 @@ COPY . .
 WORKDIR /app/packages/shared-types
 RUN npm run build
 
-# Boot the Express app
+# Install OpenSSL for Prisma engine compatibility on Alpine
+RUN apk add --no-cache openssl
+
+# Generate Prisma client
 WORKDIR /app/apps/api
+RUN npx prisma generate
+
+# Boot the Express app
 CMD ["npm", "run", "dev"]

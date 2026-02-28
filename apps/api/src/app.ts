@@ -5,6 +5,8 @@ import cors from 'cors';
 import pinoHttp from 'pino-http';
 import passport from './config/passport';
 import { authRouter } from './routes/auth';
+import { userRouter } from './routes/user.route';
+import { aiRouter } from './routes/ai.route';
 import { config } from './config/env';
 
 const app = express();
@@ -36,6 +38,8 @@ app.use(passport.session());
 
 // Routes
 app.use('/api/auth', authRouter);
+app.use('/api/user', userRouter);
+app.use('/api/ai', aiRouter);
 
 app.get('/health', (_, res) => res.json({ status: 'ok', uptime: process.uptime() }));
 

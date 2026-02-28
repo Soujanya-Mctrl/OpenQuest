@@ -9,15 +9,16 @@ generator client {
 }
 
 model User {
-  id           String        @id @default(cuid())
-  email        String?       @unique
-  username     String?       @unique
-  githubId     String?       @unique
+  id           String           @id @default(cuid())
+  email        String?          @unique
+  username     String?          @unique
+  githubId     String?          @unique
   name         String?
   avatarUrl    String?
   accessToken  String?
   skillProfile SkillProfile?
-  createdAt    DateTime      @default(now())
+  preferences  UserPreferences?
+  createdAt    DateTime         @default(now())
 }
 
 model SkillProfile {
@@ -35,6 +36,18 @@ model SkillProfile {
   preferredContributionTypes String[] @default([])
   weeklyAvailability         String?
   lastFastUpdate             DateTime @default(now())
+}
+
+model UserPreferences {
+  id                 String   @id @default(cuid())
+  userId             String   @unique
+  user               User     @relation(fields: [userId], references: [id])
+  experienceLevel    String   @default("beginner")
+  preferredLanguages String[] @default([])
+  contributionTypes  String[] @default([])
+  goal               String?
+  onboardedAt        DateTime @default(now())
+  updatedAt          DateTime @updatedAt
 }
 
 model RepoIndex {

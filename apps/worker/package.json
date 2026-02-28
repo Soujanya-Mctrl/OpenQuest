@@ -2,10 +2,10 @@
     "name": "@OpenQuest/worker",
     "version": "1.0.0",
     "description": "Background Intelligence Worker",
-    "main": "src/worker.ts",
+    "main": "src/index.ts",
     "scripts": {
-        "dev": "nodemon --exec ts-node src/worker.ts",
-        "start": "ts-node src/worker.ts"
+        "dev": "nodemon --exec ts-node src/index.ts",
+        "start": "ts-node src/index.ts"
     },
     "dependencies": {
         "@OpenQuest/shared-types": "^0.1.0",

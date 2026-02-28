@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
 
   web:
@@ -9,11 +7,13 @@ services:
     ports:
       - "3000:3000"
     env_file:
-      - ../../.env
+      - ../../apps/api/.env
     depends_on:
       - api
     volumes:
       - ../../apps/web:/app/apps/web
+      - /app/node_modules
+      - /app/apps/web/node_modules
     networks:
       - gitmaster
 
@@ -22,14 +22,19 @@ services:
       context: ../../
       dockerfile: infra/docker/api.Dockerfile
     ports:
-      - "3001:3001"
+      - "8000:8000"
     env_file:
-      - ../../.env
+      - ../../apps/api/.env
+    environment:
+      - DATABASE_URL=postgresql://gitmaster:gitmaster@db:5432/gitmaster
+      - REDIS_URL=redis://redis:6379
     depends_on:
       - db
       - redis
     volumes:
       - ../../apps/api:/app/apps/api
+      - /app/node_modules
+      - /app/apps/api/node_modules
     networks:
       - gitmaster
 
@@ -38,11 +43,18 @@ services:
       context: ../../
       dockerfile: infra/docker/worker.Dockerfile
     env_file:
-      - ../../.env
+      - ../../apps/api/.env
+    environment:
+      - DATABASE_URL=postgresql://gitmaster:gitmaster@db:5432/gitmaster
+      - REDIS_URL=redis://redis:6379
     depends_on:
       - api
       - redis
       - db
+    volumes:
+      - ../../apps/worker:/app/apps/worker
+      - /app/node_modules
+      - /app/apps/worker/node_modules
     networks:
       - gitmaster
 

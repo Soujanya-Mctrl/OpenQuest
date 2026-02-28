@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -25,6 +25,7 @@ import {
     Medal,
     Users,
     BookOpen,
+    Loader2,
 } from "lucide-react";
 
 const levels = [
@@ -40,48 +41,136 @@ function getCurrentLevel(xp: number) {
     return { level, tier, tierLabel: tier.label };
 }
 
-const profile = {
-    username: "vanshdeo",
-    name: "Vansh Deo",
-    avatar: "VD",
-    xp: 8240,
-    xpToNext: 10000,
-    streak: 12,
-    rank: 47,
-    contributions: 84,
-    mergedPRs: 31,
-    repos: 7,
-    badges: [
-        { icon: <Flame className="w-6 h-6 text-orange-400" />, name: "On Fire", desc: "10+ day streak", earned: true },
-        { icon: <Droplets className="w-6 h-6 text-blue-400" />, name: "First Wave", desc: "First PR merged", earned: true },
-        { icon: <Rocket className="w-6 h-6 text-yellow-400" />, name: "Speed Run", desc: "Quest in under 2hr", earned: true },
-        { icon: <Medal className="w-6 h-6 text-yellow-500" />, name: "Top 50", desc: "Leaderboard top 50", earned: true },
-        { icon: <CheckCircle className="w-6 h-6 text-green-400" />, name: "Precision", desc: "5 quests, 0 review cycles", earned: false },
-        { icon: <Trophy className="w-6 h-6 text-yellow-400" />, name: "Island Legend", desc: "Reach level 31+", earned: false },
-        { icon: <Users className="w-6 h-6 text-purple-400" />, name: "Team Player", desc: "Help 10 other devs", earned: false },
-        { icon: <BookOpen className="w-6 h-6 text-blue-400" />, name: "Doc Wizard", desc: "10 doc PRs merged", earned: false },
-    ],
-    timeline: [
-        { date: "Feb 25", action: "Merged PR in vercel/next.js", xp: "+280 XP", type: "merge" },
-        { date: "Feb 22", action: "Completed 'Fix hydration error' quest", xp: "+280 XP", type: "quest" },
-        { date: "Feb 18", action: "Reached Level 18 — Island Raider!", xp: "🎉", type: "levelup" },
-        { date: "Feb 15", action: "Merged PR in shadcn/shadcn-ui", xp: "+120 XP", type: "merge" },
-        { date: "Feb 12", action: "3rd consecutive week streak", xp: "+50 XP bonus", type: "streak" },
-        { date: "Feb 9", action: "Started 'Add dark mode to docs' quest", xp: "⏳", type: "quest" },
-        { date: "Feb 5", action: "Earned 'Speed Run' badge", xp: "🏅", type: "badge" },
-    ],
-    stats: [
-        { label: "Total XP", value: "8,240", icon: Zap, color: "text-yellow-400" },
-        { label: "Current Rank", value: "#47", icon: Trophy, color: "text-blue-400" },
-        { label: "Merged PRs", value: "31", icon: GitMerge, color: "text-green-400" },
-        { label: "Day Streak", value: "12", icon: Flame, color: "text-orange-400" },
-        { label: "Active Quests", value: "3", icon: Shield, color: "text-purple-400" },
-        { label: "Repos", value: "7", icon: Code, color: "text-cyan-400" },
-    ],
+interface StatItem {
+    label: string;
+    value: string;
+    icon: React.ComponentType<{ className?: string }>;
+    color: string;
+}
+
+interface BadgeItem {
+    icon: React.ReactNode;
+    name: string;
+    desc: string;
+    earned: boolean;
+}
+
+interface TimelineItem {
+    date: string;
+    action: string;
+    xp: string;
+    type: string;
+}
+
+interface ProfileData {
+    username: string;
+    name: string;
+    avatar: string;
+    avatarUrl?: string;
+    xp: number;
+    xpToNext: number;
+    streak: number;
+    rank: number;
+    contributions: number;
+    mergedPRs: number;
+    repos: number;
+    badges: BadgeItem[];
+    timeline: TimelineItem[];
+    stats: StatItem[];
+}
+
+// Fallback mock data when not authenticated
+const MOCK_PROFILE: ProfileData = {
+    username: "guest",
+    name: "Guest User",
+    avatar: "GU",
+    xp: 0,
+    xpToNext: 500,
+    streak: 0,
+    rank: 999,
+    contributions: 0,
+    mergedPRs: 0,
+    repos: 0,
+    badges: [],
+    timeline: [],
+    stats: [],
 };
 
+function buildProfileFromApi(data: any): ProfileData {
+    const sp = data.skillProfile;
+    const totalContributions = sp?.contributionCount ?? 0;
+    const totalRepos = sp?.totalRepos ?? 0;
+    const totalStars = sp?.totalStars ?? 0;
+    const xp = totalContributions * 50 + totalStars * 20 + totalRepos * 30;
+
+    return {
+        username: data.username || "user",
+        name: data.name || data.username || "User",
+        avatar: (data.name || data.username || "U").slice(0, 2).toUpperCase(),
+        avatarUrl: data.avatarUrl,
+        xp,
+        xpToNext: Math.ceil((xp + 500) / 500) * 500,
+        streak: 0,
+        rank: 0,
+        contributions: totalContributions,
+        mergedPRs: 0,
+        repos: totalRepos,
+        badges: [
+            { icon: <Flame className="w-6 h-6 text-orange-400" />, name: "On Fire", desc: "10+ day streak", earned: false },
+            { icon: <Droplets className="w-6 h-6 text-blue-400" />, name: "First Wave", desc: "First PR merged", earned: totalContributions > 0 },
+            { icon: <Rocket className="w-6 h-6 text-yellow-400" />, name: "Speed Run", desc: "Quest in under 2hr", earned: false },
+            { icon: <Medal className="w-6 h-6 text-yellow-500" />, name: "Top 50", desc: "Leaderboard top 50", earned: false },
+            { icon: <CheckCircle className="w-6 h-6 text-green-400" />, name: "Precision", desc: "5 quests, 0 review cycles", earned: false },
+            { icon: <Trophy className="w-6 h-6 text-yellow-400" />, name: "Island Legend", desc: "Reach level 31+", earned: false },
+            { icon: <Users className="w-6 h-6 text-purple-400" />, name: "Team Player", desc: "Help 10 other devs", earned: false },
+            { icon: <BookOpen className="w-6 h-6 text-blue-400" />, name: "Doc Wizard", desc: "10 doc PRs merged", earned: false },
+        ],
+        timeline: [],
+        stats: [
+            { label: "Total XP", value: xp.toLocaleString(), icon: Zap, color: "text-yellow-400" },
+            { label: "Current Rank", value: "--", icon: Trophy, color: "text-blue-400" },
+            { label: "Contributions", value: String(totalContributions), icon: GitMerge, color: "text-green-400" },
+            { label: "Day Streak", value: "0", icon: Flame, color: "text-orange-400" },
+            { label: "Stars", value: String(totalStars), icon: Star, color: "text-purple-400" },
+            { label: "Repos", value: String(totalRepos), icon: Code, color: "text-cyan-400" },
+        ],
+    };
+}
+
 export default function ProfilePage() {
+    const [profile, setProfile] = useState<ProfileData | null>(null);
+    const [loading, setLoading] = useState(true);
     const [xpAnimating, setXpAnimating] = useState(false);
+
+    useEffect(() => {
+        async function fetchProfile() {
+            try {
+                const res = await fetch("http://localhost:8000/api/user/profile", {
+                    credentials: "include",
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    setProfile(buildProfileFromApi(data));
+                } else {
+                    setProfile(MOCK_PROFILE);
+                }
+            } catch {
+                setProfile(MOCK_PROFILE);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchProfile();
+    }, []);
+
+    if (loading || !profile) {
+        return (
+            <div className="flex items-center justify-center min-h-[60vh]">
+                <Loader2 className="w-8 h-8 text-orange-400 animate-spin" />
+            </div>
+        );
+    }
+
     const { level, tier } = getCurrentLevel(profile.xp);
     const xpProgress = ((profile.xp % 500) / 500) * 100;
 
@@ -195,7 +284,7 @@ export default function ProfilePage() {
                     transition={{ delay: 0.1 }}
                     className="grid grid-cols-3 lg:grid-cols-6 gap-3 mb-8"
                 >
-                    {profile.stats.map(({ label, value, icon: Icon, color }, i) => (
+                    {profile.stats.map(({ label, value, icon: Icon, color }: StatItem, i: number) => (
                         <Card
                             key={label}
                             className="bg-[#121212] border-white/5 p-4 text-center hover:border-orange-500/20 hover:-translate-y-1 transition duration-300"
@@ -225,7 +314,7 @@ export default function ProfilePage() {
 
                         <TabsContent value="badges">
                             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                                {profile.badges.map(({ icon, name, desc, earned }, i) => (
+                                {profile.badges.map(({ icon, name, desc, earned }: BadgeItem, i: number) => (
                                     <motion.div
                                         key={name}
                                         initial={{ opacity: 0, scale: 0.9 }}
@@ -259,7 +348,7 @@ export default function ProfilePage() {
                         <TabsContent value="timeline">
                             <Card className="bg-[#121212] border-white/5 p-6 hover:border-orange-500/20 duration-300 transition-all">
                                 <div className="space-y-0">
-                                    {profile.timeline.map(({ date, action, xp, type }, i) => (
+                                    {profile.timeline.map(({ date, action, xp, type }: TimelineItem, i: number) => (
                                         <div key={i} className="flex gap-4 group">
                                             <div className="flex flex-col items-center">
                                                 <div className="w-7 h-7 rounded-full bg-[#0A0A0A] border border-white/10 flex items-center justify-center group-hover:border-orange-500/30 group-hover:scale-110 transition-all duration-300">

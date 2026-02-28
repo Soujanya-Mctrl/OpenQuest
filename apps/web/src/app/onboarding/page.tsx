@@ -141,9 +141,22 @@ export default function OnboardingPage() {
         }
     };
 
-    const handleComplete = () => {
-        // TODO: Send answers to backend API
-        console.log("Onboarding answers:", answers);
+    const handleComplete = async () => {
+        try {
+            const res = await fetch("http://localhost:8000/api/user/preferences", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                credentials: "include",
+                body: JSON.stringify(answers),
+            });
+
+            if (!res.ok) {
+                console.error("Failed to save preferences:", await res.text());
+            }
+        } catch (err) {
+            console.error("Error saving preferences:", err);
+        }
+
         router.push("/projects");
     };
 
@@ -223,8 +236,8 @@ export default function OnboardingPage() {
                                             key={id}
                                             onClick={() => setAnswers((p) => ({ ...p, experience: id }))}
                                             className={`w-full text-left p-4 rounded-[6px] border-2 transition-all duration-150 flex items-center gap-4 ${answers.experience === id
-                                                    ? "border-orange-500 bg-orange-500/10"
-                                                    : "border-white/5 bg-[#111] hover:border-white/10"
+                                                ? "border-orange-500 bg-orange-500/10"
+                                                : "border-white/5 bg-[#111] hover:border-white/10"
                                                 }`}
                                         >
                                             <span className="text-2xl">{emoji}</span>
@@ -256,8 +269,8 @@ export default function OnboardingPage() {
                                             key={id}
                                             onClick={() => toggleLanguage(id)}
                                             className={`p-3 rounded-[6px] border-2 transition-all duration-150 text-center ${answers.languages.includes(id)
-                                                    ? "border-orange-500 bg-orange-500/10"
-                                                    : "border-white/5 bg-[#111] hover:border-white/10"
+                                                ? "border-orange-500 bg-orange-500/10"
+                                                : "border-white/5 bg-[#111] hover:border-white/10"
                                                 }`}
                                         >
                                             <div
@@ -286,8 +299,8 @@ export default function OnboardingPage() {
                                             key={id}
                                             onClick={() => toggleContribution(id)}
                                             className={`p-5 rounded-[6px] border-2 transition-all duration-150 text-left ${answers.contributions.includes(id)
-                                                    ? "border-orange-500 bg-orange-500/10"
-                                                    : "border-white/5 bg-[#111] hover:border-white/10"
+                                                ? "border-orange-500 bg-orange-500/10"
+                                                : "border-white/5 bg-[#111] hover:border-white/10"
                                                 }`}
                                         >
                                             <Icon className={`w-6 h-6 mb-3 ${answers.contributions.includes(id) ? "text-orange-400" : "text-slate-500"}`} />
@@ -314,8 +327,8 @@ export default function OnboardingPage() {
                                             key={id}
                                             onClick={() => setAnswers((p) => ({ ...p, goal: id }))}
                                             className={`w-full text-left p-4 rounded-[6px] border-2 transition-all duration-150 flex items-center gap-4 ${answers.goal === id
-                                                    ? "border-orange-500 bg-orange-500/10"
-                                                    : "border-white/5 bg-[#111] hover:border-white/10"
+                                                ? "border-orange-500 bg-orange-500/10"
+                                                : "border-white/5 bg-[#111] hover:border-white/10"
                                                 }`}
                                         >
                                             <Icon className={`w-5 h-5 ${answers.goal === id ? "text-orange-400" : "text-slate-500"}`} />
