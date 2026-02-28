@@ -5,6 +5,7 @@
  * Boots a Redis connection and starts all BullMQ workers.
  */
 
+import "dotenv/config";
 import IORedis from "ioredis";
 import { startIndexRepoWorker } from "./jobs/indexRepoJob";
 
