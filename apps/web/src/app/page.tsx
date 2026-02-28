@@ -31,9 +31,7 @@ const fadeUp: Variants = {
 };
 
 const handleGithubLogin = () => {
-  // TODO: Switch back to OAuth when DB is ready
-  // window.location.href = `${API_BASE}/api/auth/github`;
-  window.location.href = "/onboarding";
+  window.location.href = `${API_BASE}/api/auth/github`;
 };
 
 const problems = [

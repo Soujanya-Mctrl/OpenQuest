@@ -16,6 +16,8 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
 const navLinks = [
     { href: "/", label: "Home", icon: Home },
     { href: "/projects", label: "Projects", icon: GitBranch },
@@ -71,6 +73,7 @@ export default function Navbar() {
                         <Button
                             size="sm"
                             className="bg-orange-600 hover:bg-orange-500 text-white border-0 shadow-lg shadow-orange-500/20"
+                            onClick={() => window.location.href = `${API_BASE}/api/auth/github`}
                         >
                             Connect GitHub
                         </Button>
@@ -106,7 +109,10 @@ export default function Navbar() {
                         </Link>
                     ))}
                     <div className="pt-2 border-t border-white/5">
-                        <Button className="w-full bg-orange-600 hover:bg-orange-500 text-white border-0">
+                        <Button
+                            className="w-full bg-orange-600 hover:bg-orange-500 text-white border-0"
+                            onClick={() => window.location.href = `${API_BASE}/api/auth/github`}
+                        >
                             Connect GitHub
                         </Button>
                     </div>
