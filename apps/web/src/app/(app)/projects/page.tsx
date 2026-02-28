@@ -137,8 +137,6 @@ const diffColorMap: Record<string, string> = {
     yellow: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
     orange: "bg-orange-500/10 text-orange-400 border-orange-500/20",
     red: "bg-red-500/10 text-red-400 border-red-500/20",
-    blue: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-    purple: "bg-purple-500/10 text-purple-400 border-purple-500/20",
 };
 
 export default function ProjectsPage() {
@@ -176,14 +174,12 @@ export default function ProjectsPage() {
                         />
                     </div>
                     <div className="flex gap-2 flex-wrap">
-                        {difficulties.map(({ label, color, active }) => (
+                        {difficulties.map(({ label, active }) => (
                             <button
                                 key={label}
                                 className={`px-3 py-2 rounded-lg text-sm font-medium border transition-all ${active
                                     ? "bg-orange-500/10 text-orange-400 border-orange-500/30"
-                                    : color
-                                        ? `${diffColorMap[color]} hover:opacity-80`
-                                        : "border-white/10 text-slate-400 hover:text-white hover:bg-white/5"
+                                    : "border-white/10 text-slate-400 hover:text-white hover:bg-white/5"
                                     }`}
                             >
                                 {label}
@@ -220,7 +216,7 @@ export default function ProjectsPage() {
                                                 <Shield className="w-3 h-3 mr-1" />
                                                 {project.difficulty}
                                             </Badge>
-                                            <Badge className={`text-xs border ${diffColorMap[project.langColor]}`}>
+                                            <Badge className="text-xs border border-white/5 text-slate-400 bg-white/5">
                                                 {project.language}
                                             </Badge>
                                             {project.tags.map((tag) => (
