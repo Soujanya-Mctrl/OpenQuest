@@ -167,7 +167,7 @@ async function fetchViaClone(
   githubToken?: string
 ): Promise<RawFile[]> {
   // Create a unique temp directory for this clone
-  const tempDir = path.join(os.tmpdir(), `git-master-${Date.now()}`);
+  const tempDir = path.join(os.tmpdir(), `OpenQuest-${Date.now()}`);
   fs.mkdirSync(tempDir, { recursive: true });
 
   try {

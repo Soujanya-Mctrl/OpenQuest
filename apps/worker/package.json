@@ -1,5 +1,5 @@
 {
-    "name": "@git-master/worker",
+    "name": "@OpenQuest/worker",
     "version": "1.0.0",
     "description": "Background Intelligence Worker",
     "main": "src/worker.ts",
@@ -8,7 +8,7 @@
         "start": "ts-node src/worker.ts"
     },
     "dependencies": {
-        "@git-master/shared-types": "^0.1.0",
+        "@OpenQuest/shared-types": "^0.1.0",
         "bullmq": "^5.70.1",
         "ioredis": "^5.10.0",
         "dotenv": "^16.6.1"
