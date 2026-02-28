@@ -1,0 +1,15 @@
+{
+  "name": "git-master",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "dependencies": {
+    "@octokit/rest": "^22.0.1",
+    "@prisma/client": "^6.19.2",
+    "isomorphic-git": "^1.37.2",
+    "prisma": "^6.19.2"
+  }
+}

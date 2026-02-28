@@ -1,0 +1,22 @@
+{
+    "name": "@git-master/worker",
+    "version": "1.0.0",
+    "description": "Background Intelligence Worker",
+    "main": "src/worker.ts",
+    "scripts": {
+        "dev": "nodemon --exec ts-node src/worker.ts",
+        "start": "ts-node src/worker.ts"
+    },
+    "dependencies": {
+        "@git-master/shared-types": "^0.1.0",
+        "bullmq": "^5.70.1",
+        "ioredis": "^5.10.0",
+        "dotenv": "^16.6.1"
+    },
+    "devDependencies": {
+        "@types/node": "^20.19.35",
+        "nodemon": "^3.1.14",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.9.3"
+    }
+}

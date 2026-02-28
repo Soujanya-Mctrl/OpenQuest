@@ -1,0 +1,74 @@
+version: "3.9"
+
+services:
+
+  web:
+    build:
+      context: ../../
+      dockerfile: infra/docker/web.Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - ../../.env
+    depends_on:
+      - api
+    volumes:
+      - ../../apps/web:/app/apps/web
+    networks:
+      - gitmaster
+
+  api:
+    build:
+      context: ../../
+      dockerfile: infra/docker/api.Dockerfile
+    ports:
+      - "3001:3001"
+    env_file:
+      - ../../.env
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - ../../apps/api:/app/apps/api
+    networks:
+      - gitmaster
+
+  worker:
+    build:
+      context: ../../
+      dockerfile: infra/docker/worker.Dockerfile
+    env_file:
+      - ../../.env
+    depends_on:
+      - api
+      - redis
+      - db
+    networks:
+      - gitmaster
+
+  db:
+    image: pgvector/pgvector:pg16
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: gitmaster
+      POSTGRES_PASSWORD: gitmaster
+      POSTGRES_DB: gitmaster
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - gitmaster
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+    networks:
+      - gitmaster
+
+volumes:
+  postgres_data:
+
+
+networks:
+  gitmaster:
